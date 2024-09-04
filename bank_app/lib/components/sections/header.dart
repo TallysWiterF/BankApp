@@ -1,3 +1,4 @@
+import 'package:bank_app/themes/themes_colors.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -10,15 +11,11 @@ class Header extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: <Color>[
-              Color.fromRGBO(103, 99, 234, 1),
-              Color.fromRGBO(155, 105, 254, 1),
-              Color.fromRGBO(195, 107, 255, 1)
-            ],
+            colors: ThemeColors.headerGradient,
           ),
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(10))),
-      child: const Padding(
-        padding: EdgeInsets.fromLTRB(16.0, 80.0, 16.0, 16.0),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16.0, 80.0, 16.0, 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -27,26 +24,20 @@ class Header extends StatelessWidget {
                 children: <Widget>[
                   Text.rich(
                     TextSpan(
-                      style: TextStyle(
-                        fontSize: 28,
-                      ),
                       text: '\$',
                       children: <TextSpan>[
                         TextSpan(
                           text: "1000.00",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Balanço disponível',
-                    style: TextStyle(fontSize: 16),
                   ),
                 ]),
-            Icon(
+            const Icon(
               Icons.account_circle,
               size: 42,
             )

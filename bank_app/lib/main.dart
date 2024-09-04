@@ -1,4 +1,5 @@
 import 'package:bank_app/screens/home.dart';
+import 'package:bank_app/themes/primary_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +11,10 @@ class BankApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'BankApp',
-      home: Home(),
+      theme: PrimaryTheme,
+      home: const Home(),
     );
   }
 }
