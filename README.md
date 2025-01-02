@@ -1,14 +1,12 @@
 <h1 align="center">Bank App 🏦</h1>
 
 <p align="center">
-Aplicativo mobile desenvolvido em Flutter.
+ O **Bank App** é um aplicativo mobile desenvolvido com Flutter, projetado para gerenciar transações bancárias de forma intuitiva.
 </p>
 
 <br />
 
 <h3 align="center">🟢 Status: Desenvolvimento Concluído</h3>
-
-<br />
 
 <h3 align="center">🎥 Tela do aplicativo</h3>
 
