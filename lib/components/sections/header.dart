@@ -1,47 +1,97 @@
-import 'package:bank_app/themes/themes_colors.dart';
+import 'package:bank_app/data/bank_http.dart';
+import 'package:bank_app/data/bank_inherited.dart';
 import 'package:flutter/material.dart';
 
-class Header extends StatelessWidget {
+class Header extends StatefulWidget {
   const Header({Key? key}) : super(key: key);
 
   @override
+  State<Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<Header> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
+    return InkWell(
+      onTap: () {
+        setState(() {});
+      },
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: ThemeColors.headerGradient,
+            colors: <Color>[
+              Color.fromARGB(255, 103, 99, 234),
+              Color.fromARGB(255, 155, 105, 254),
+              Color.fromARGB(255, 195, 107, 255),
+            ],
           ),
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(10))),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 80.0, 16.0, 16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 88, 16, 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text.rich(
-                    TextSpan(
-                      text: '\$',
-                      children: <TextSpan>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text.rich(
                         TextSpan(
-                          text: "1000.00",
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          text: '\$',
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: BankInherited.of(context)
+                                    .available
+                                    .toString(),
+                                style: Theme.of(context).textTheme.bodyLarge)
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      const Text('Available balance'),
+                    ],
                   ),
-                  const Text(
-                    'Balanço disponível',
-                  ),
-                ]),
-            const Icon(
-              Icons.account_circle,
-              size: 42,
-            )
-          ],
+                  FutureBuilder(
+                      future: BankHttp().dolarToReal(),
+                      builder: (context, snapshot) {
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.none:
+                          case ConnectionState.waiting:
+                            return const CircularProgressIndicator();
+                          case ConnectionState.active:
+                            break;
+                          case ConnectionState.done:
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text.rich(
+                                  TextSpan(
+                                    text: 'R\$',
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                          text: snapshot.data.toString(),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge)
+                                    ],
+                                  ),
+                                ),
+                                const Text('Dolar to Real'),
+                              ],
+                            );
+                        }
+                        return const Text('Erro na API');
+                      }),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

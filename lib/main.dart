@@ -1,19 +1,26 @@
+import 'package:bank_app/data/bank_inherited.dart';
+import 'package:bank_app/models/bank.dart';
 import 'package:bank_app/screens/home.dart';
-import 'package:bank_app/themes/primary_theme.dart';
+import 'package:bank_app/themes/purple_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const BankApp());
+  runApp(
+    BankInherited(
+      bankModel: BankModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
-class BankApp extends StatelessWidget {
-  const BankApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BankApp',
-      theme: PrimaryTheme,
+      title: 'Bank App',
+      theme: purpleTheme,
       home: const Home(),
     );
   }
