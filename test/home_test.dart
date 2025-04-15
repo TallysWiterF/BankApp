@@ -72,23 +72,18 @@ void main() {
     },
   );
 
-  testWidgets('When tap Deposit should update earned to 10', (tester) async {
+  testWidgets("When tap Deposit should upload earned in 10", (tester) async {
     await tester.pumpWidget(
       BankInherited(
         bankModel: BankModel(),
-        child: const MaterialApp(home: Home()),
+        child: const MaterialApp(
+          home: Home(),
+        ),
       ),
     );
 
-    // Aguarda renderização
+    await tester.tap(find.text('Deposit'));
     await tester.pumpAndSettle();
-
-    // Clica no botão Depositar
-    await tester.tap(find.text('Deposit')); // ou o botão correto
-    await tester.pumpAndSettle();
-
-    // Verifica se o valor foi atualizado
-    expect(
-        find.text('\$10'), findsOneWidget); // <- Aqui dá erro se não encontrar
+    expect(find.text('\$10.0'), findsNWidgets(2));
   });
 }
