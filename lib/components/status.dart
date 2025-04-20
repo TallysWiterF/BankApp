@@ -3,7 +3,7 @@ import 'package:bank_app/themes/theme_colors.dart';
 import 'package:flutter/material.dart';
 
 class AccountStatus extends StatefulWidget {
-  const AccountStatus({Key? key}) : super(key: key);
+  const AccountStatus({super.key});
 
   @override
   State<AccountStatus> createState() => _AccountStatusState();

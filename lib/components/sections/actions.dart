@@ -5,7 +5,7 @@ import '../activity.dart';
 import '../box_card.dart';
 
 class ActionsSection extends StatelessWidget {
-  const ActionsSection({Key? key}) : super(key: key);
+  const ActionsSection({super.key});
 
   @override
   Widget build(BuildContext context) {

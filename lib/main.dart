@@ -1,3 +1,4 @@
+import 'package:bank_app/data/bank_http.dart';
 import 'package:bank_app/data/bank_inherited.dart';
 import 'package:bank_app/models/bank.dart';
 import 'package:bank_app/screens/home.dart';
@@ -14,14 +15,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bank App',
       theme: purpleTheme,
-      home: const Home(),
+      home: Home(api: BankHttp().dolarToReal()),
     );
   }
 }

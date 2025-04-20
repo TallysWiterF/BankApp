@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class BankInherited extends InheritedNotifier<BankModel> {
   const BankInherited({
-    Key? key,
+    super.key,
     required BankModel bankModel,
-    required Widget child,
-  }) : super(key: key, notifier: bankModel, child: child);
+    required super.child,
+  }) : super(notifier: bankModel);
 
   static BankModel of(BuildContext context) {
     final BankInherited? inherited =

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../box_card.dart';
 
 class PointsExchange extends StatelessWidget {
-  const PointsExchange({Key? key}) : super(key: key);
+  const PointsExchange({super.key});
 
   @override
   Widget build(BuildContext context) {

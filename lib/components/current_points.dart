@@ -3,7 +3,7 @@ import 'package:bank_app/themes/theme_colors.dart';
 import 'package:flutter/material.dart';
 
 class AccountPoints extends StatefulWidget {
-  const AccountPoints({Key? key}) : super(key: key);
+  const AccountPoints({super.key});
 
   @override
   State<AccountPoints> createState() => _AccountPointsState();

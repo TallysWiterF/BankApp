@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Activity extends StatelessWidget {
   final Icon mainIcon;
   final String cardTitle;
-  const Activity({Key? key, required this.mainIcon, required this.cardTitle}) : super(key: key);
+  const Activity({super.key, required this.mainIcon, required this.cardTitle});
 
   @override
   Widget build(BuildContext context) {
